@@ -1,4 +1,4 @@
-package ua.com.netcrecker;
+package ua.com.netcrecker.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,6 +9,6 @@ public class MainController {
 
     @RequestMapping(value = {"/"}, method = RequestMethod.GET)
     public String helloWorld() {
-        return "hello";
+        return "HighChart";
     }
 }

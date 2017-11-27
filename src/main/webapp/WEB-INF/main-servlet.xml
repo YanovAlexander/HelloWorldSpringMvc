@@ -10,7 +10,7 @@
     http://www.springframework.org/schema/mvc
     http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
 
-    <context:component-scan base-package="ua.com.netcrecker"/>
+    <context:component-scan base-package="ua.com.netcrecker.controller"/>
     <mvc:annotation-driven/>
 
     <mvc:resources  mapping="/resources/**" location="/resources/" />

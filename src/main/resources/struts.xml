@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+        "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+    <package name="loginTest" extends="struts-default">
+
+        <interceptors>
+            <interceptor name="validateLogin" class="ua.com.struts.interceptors.LoginValidationInterceptor"/>
+            <interceptor name="validatePassword" class="ua.com.struts.interceptors.PasswordValidationInterceptor"/>
+        </interceptors>
+
+        <action name="login">
+            <result>/jsp/login/login.jsp</result>
+        </action>
+
+        <action name="loginProcess" class="ua.com.struts.actions.Authentication">
+            <interceptor-ref name="defaultStack"/>
+            <interceptor-ref name="validateLogin"/>
+            <result name="success">/jsp/login/loginSuccess.jsp</result>
+            <result name="error">/jsp/login/loginError.jsp</result>
+            <result name="loggedIn">/jsp/login/loggedInMessage.jsp</result>
+            <result name="connectionRefused">/jsp/connectionRefused.jsp</result>
+        </action>
+
+        <action name="registration">
+            <result>/jsp/registration/registration.jsp</result>
+        </action>
+        <action name="registrationProcess" class="ua.com.struts.actions.Authentication" method="registration">
+            <interceptor-ref name="defaultStack"/>
+            <interceptor-ref name="validatePassword"/>
+            <result name="success">/jsp/registration/registrationSuccess.jsp</result>
+            <result name="error">/jsp/registration/registrationError.jsp</result>
+            <result name="userExists">/jsp/registration/userExists.jsp</result>
+            <result name="passwordNotSecure">/jsp/registration/passwordNotSecure.jsp</result>
+            <result name="connectionRefused">/jsp/connectionRefused.jsp</result>
+        </action>
+        <action name="logout" class="ua.com.struts.actions.Authentication" method="logout">
+            <result name="success">/jsp/logoutSuccess.jsp</result>
+        </action>
+    </package>
+</struts>
